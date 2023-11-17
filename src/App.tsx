@@ -15,7 +15,7 @@ import LazyLoading from './pages/LazyLoading';
 
 
 
-function App() {
+function App({handleFormSubmit}: FormExample) {
 
     
     
@@ -27,7 +27,7 @@ function App() {
             <Route path='BetterTodo' element={<BetterTodo />}/>
             <Route path='Counter' element={<Counter />}/>
             <Route path='ExusEffect' element={<ExusEffect />}/>
-            <Route path='FormExample' element={<FormExample />}/>
+            <Route path='FormExample' element={<FormExample onSubmit={handleFormSubmit} />}/>
             <Route path='NewChallenge' element={<NewChallenge />}/>
             <Route path='TodoApp' element={<TodoApp />}/>
             <Route  path='DrawingApp' element={<DrawingApp />}/> 

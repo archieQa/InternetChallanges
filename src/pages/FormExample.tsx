@@ -45,25 +45,34 @@ const FormExample = ({onSubmit}:FormExampleProps) => {
   }, [])
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-
-    if(!formData.username) {
-      setError((prevData) => ({...prevData, username: 'Please fill out the Username Input'}))
+    e.preventDefault();
+  
+    let hasErrors = false;
+  
+    if (!formData.username) {
+      setError((prevData) => ({ ...prevData, username: 'Please fill out the Username Input' }));
+      hasErrors = true;
     }
-
-    if(!formData.password) {
-      setError((prevData) => ({...prevData, password: 'Please fill out the Password Input'}))
+  
+    if (!formData.password) {
+      setError((prevData) => ({ ...prevData, password: 'Please fill out the Password Input' }));
+      hasErrors = true;
     }
-    if(!formData.Email) {
-      setError((prevData) => ({...prevData, Email: 'Please fill out the Email Input'}))
+  
+    if (!formData.Email) {
+      setError((prevData) => ({ ...prevData, Email: 'Please fill out the Email Input' }));
+      hasErrors = true;
     }
+  
+    if (!hasErrors) {
       
-
-    setTimeout(() => {
-        onSubmit(formData); 
-        setSuccsess('Your Registration is done')
-    }, 1000)
-  }
+  
+      setTimeout(() => {
+        setSuccsess('Your Registration is done');
+        onSubmit(formData);
+      }, 500);
+    }
+  };
   return (
     <>
     <h1 className='text-4xl font-bold mb-6'>Google Sign in</h1>
