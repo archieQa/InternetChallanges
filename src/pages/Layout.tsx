@@ -3,38 +3,44 @@ import {Link , Outlet} from 'react-router-dom'
 const Layout = () => {
   return (
     <>
-    <nav>
-        <ul>
-            <li>
+    <nav className='p-4 fixed left-0 top-0 h-full flex flex-col justify-center z-10'>
+        <ul className='flex flex-col space-y-4'>
+            <li className='text-white'>
                 <Link to='/Home'>Home</Link>
             </li>
-            <li>
+            <li className='text-white'>
                 <Link to='/BetterToDo'>BetterToDo</Link>
             </li>
-            <li>
+            <li className='text-white'>
                 <Link to='/Counter'>Counter</Link>
             </li>
-            <li>
+            <li className='text-white'>
                 <Link to='/ExusEffect'>useEffect</Link>
             </li>
-            <li>
+            <li className='text-white'>
                 <Link to='/FormExample'>FormExample</Link>
             </li>
-            <li>
+            <li className='text-white'>
                 <Link to='/NewChallenge'>NewChallenge</Link>
             </li>
-            <li>
+            <li className='text-white'>
                 <Link to='/TodoApp'>TodoAPP</Link>
             </li>
-            <li>
+            <li className='text-white'>
                 <Link to='/DrawingApp'>DrawingApp</Link>
-            </li>
+            </li >
             <li>
                 <Link to='/RefWorks'>RefWorks</Link>
             </li>
+            <li className='text-white'>
+                <Link to='/LazyLoading'>LazyLoading</Link>
+            </li>
         </ul>
+
     </nav>
-    <Outlet /> 
+    <div className='mt-16'> 
+    <Outlet />
+    </div> 
     </>
   )
 }

@@ -1,64 +1,40 @@
-import React, { useReducer, useState } from 'react';
+import {useState} from 'react'
 
 const TodoApp = () => {
-  const todoReducer = (todos, action) => {
-      switch(action.type){
-        case 'ADD_TODO': 
-        return [...todos, {id: Date.now(), text: action.payload , completed: false }];
-        case 'REMOVE_TODO':
-        return todos.filter(todo => todo.id !== action.payload ); // this will create a new todo array which does not havee the id action.payload
-        case 'TOGGLE_TODO':
-        return todos.map(todo => todo.id === action.payload ? {...todo, completed: !todo.completed} : todo);
-        default: 
-        return todos; 
-      }
-  };
+  const [todos , setTodos] = useState([]); 
+  const [newTodo, setNewTodo] = useState('')
 
-  const [todos, dispatch] = useReducer(todoReducer, []);
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    setTodos((prevTodos) => [...prevTodos, newTodo]); 
+    setNewTodo(''); 
+  }
+  const RemoveItem = (index) => {
+    setTodos((prevTodos) => prevTodos.filter((_, i) => i !== index)); //keeps all the items in the array whos index are not indexi aty 
+  }
 
-  const [newTodo, setNewTodo] = useState('');
-
-  const addTodo = () => {
-    if (newTodo.trim() !== '') {
-      dispatch({type: 'ADD_TODO', payload:newTodo.trim()});
-      setNewTodo('')
-    }
-  };
-
-  const toggleTodo = (id) => {
-    dispatch({type: "TOGGLE_TODO" , payload:id});
-  };
-
-  const removeTodo = (id) => {
-    dispatch({type: 'REMOVE_TODO', payload: id})
-  };
-
+  const handleInputChange  = (e) => {
+    setNewTodo (e.target.value); 
+  } 
   return (
-    <div>
-      <h1>To-Do List</h1>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            <input 
-            type='checkbox'
-            checked={todo.completed}
-            onChange={() => toggleTodo(todo.id)}
-            />
-            {todo.text}
-            <button onClick={() => removeTodo(todo.id)}>Remove</button>
-          </li>
-        ))}
-      </ul>
+   <>
+   <div className='pt-7 '>
+    <label>
+      <input  type='text' placeholder='Todo' value={newTodo} onChange={handleInputChange} >
+      </input>
+    </label>
+    <button onClick={handleSubmit}>Add to do</button>
+   </div>
+   <div>
+    {todos.map((item ,index) => (
       <div>
-        <input
-          type="text"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-        />
-        <button onClick={addTodo}>Add Todo</button>
+      <li key={index}>{item}</li>
+      <button onClick={() => RemoveItem(index)}>Delete</button>
       </div>
-    </div>
-  );
-};
+  )) }
+   </div>
+   </>
+  )
+}
 
-export default TodoApp;
+export default TodoApp

@@ -10,6 +10,7 @@ import NewChallenge from './pages/NewChallenge';
 import TodoApp from './pages/TodoApp';
 import DrawingApp from './pages/DrawingApp';
 import RefWorks from './pages/RefWorks';
+import LazyLoading from './pages/LazyLoading';
 
 
 
@@ -20,9 +21,9 @@ function App() {
     
       return (
         <BrowserRouter>
-        <Routes>
+        <Routes >
           <Route path='/' element={<Layout /> }>
-            <Route index element={<Home />}/>
+            <Route path='Home' element={<Home />}/>
             <Route path='BetterTodo' element={<BetterTodo />}/>
             <Route path='Counter' element={<Counter />}/>
             <Route path='ExusEffect' element={<ExusEffect />}/>
@@ -31,6 +32,8 @@ function App() {
             <Route path='TodoApp' element={<TodoApp />}/>
             <Route  path='DrawingApp' element={<DrawingApp />}/> 
             <Route  path='RefWorks' element={<RefWorks />}/> 
+            <Route  path='LazyLoading' element={<LazyLoading />}/> 
+
           </Route>
         </Routes>
         </BrowserRouter>

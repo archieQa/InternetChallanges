@@ -31,9 +31,12 @@ const Counter = () => {
       <p>Count is: {state.count}</p>
       <button onClick={() => dispatch({ type: 'plus' })}>Plusi</button>
       <button onClick={() => dispatch({ type: 'minus' })}>Minusi</button>
+      <div className='h-4'><br></br></div>
+      <div className='flex justify-center pt-10'> 
       <div ref={myRef} style={{ width: '70%', border: '1px solid black', padding: '10px' }} >
-        This is the box 
-        <p> Box is : {boxWidth}</p>
+        <p className='text-3xl font-bold '>This is the box </p>
+        <p className='font-bold text-3xl pt-10 bg-black-600'> Box is : {boxWidth}</p>
+      </div>
       </div>
     </div>  
   ); 
