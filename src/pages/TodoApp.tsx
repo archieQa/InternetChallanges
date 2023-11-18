@@ -1,7 +1,10 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 const TodoApp = () => {
-  const [todos , setTodos] = useState([]); 
+  const [todos , setTodos] = useState(() => {
+    const storedTasks = JSON.parse(localStorage.getItem('todos')) || [];
+    return storedTasks;
+  }); 
   const [newTodo, setNewTodo] = useState('')
 
   const handleSubmit = (e) => {
@@ -12,6 +15,17 @@ const TodoApp = () => {
   const RemoveItem = (index) => {
     setTodos((prevTodos) => prevTodos.filter((_, i) => i !== index)); //keeps all the items in the array whos index are not indexi aty 
   }
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos])
+
+  useEffect(() => {
+    if(!todos || todos.length === 0) {
+    const storedTasks = JSON.parse(localStorage.getItem('todos')) || []; 
+    setTodos(storedTasks)
+    }
+   }, [])
 
   const handleInputChange  = (e) => {
     setNewTodo (e.target.value); 

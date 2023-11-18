@@ -35,6 +35,18 @@ const Layout = () => {
             <li className='text-white'>
                 <Link to='/LazyLoading'>LazyLoading</Link>
             </li>
+            <li className='text-white'>
+                <Link to='/Navbar'>Navbar</Link>
+            </li>
+            <li className='text-white'>
+                <Link to='/Accordion'>Accordion</Link>
+            </li>
+            <li className='text-white'>
+                <Link to='/Pagination'>Pagination</Link>
+            </li>
+            <li className='text-white'>
+                <Link to='/Carousel'>Carousel</Link>
+            </li>
         </ul>
 
     </nav>
